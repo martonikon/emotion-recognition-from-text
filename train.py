@@ -24,12 +24,10 @@ def set_seed(seed):
 set_seed(42)
 
 # --- Configuration ---
-# STEP 1: EXPERIMENT WITH A MORE POWERFUL MODEL
-# Simply change this to 'roberta-base' to try a larger model.
-# It will be slower but may yield better results.
-MODEL_NAME = 'roberta-base' # 'distilbert-base-uncased' or 'bert-base-uncased' 'roberta-base'
+#STEP1: Fill in the constants
+MODEL_NAME = 'bert-base-uncased' # 'distilbert-base-uncased' or 'bert-base-uncased' 'roberta-base'
 EPOCHS = 15 # A smaller number of epochs is often better for larger models
-BATCH_SIZE = 8 # Reduce batch size for larger models to avoid memory issues
+BATCH_SIZE = 8 # Reduced batch size for larger models to avoid memory issues,8 is ok.
 MAX_LENGTH = 128
 LEARNING_RATE = 2e-5
 
@@ -79,6 +77,7 @@ class WeightedLossTrainer(Trainer):
         labels = inputs.pop("labels")
         outputs = model(**inputs)
         logits = outputs.logits
+        #loss funtion with my specially calcuated weights
         loss_fct = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weights.to(model.device))
         loss = loss_fct(logits, labels)
         return (loss, outputs) if return_outputs else loss
