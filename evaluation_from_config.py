@@ -13,7 +13,7 @@ import os
 
 # --- VERY IMPORTANT: CHANGE THIS LINE ---
 # Put the path to the folder containing your saved model (e.g., './results/distilbert-base-uncased-5epochs/checkpoint-1234')
-PATH_TO_SAVED_MODEL = "./results/bert-base-uncased-5epochs-final"
+PATH_TO_SAVED_MODEL = "./results/roberta-base-5epochs/checkpoint-105615"
 # -----------------------------------------
 
 # --- 1. Load Dataset and Prepare Splits (Same as your train.py) ---
